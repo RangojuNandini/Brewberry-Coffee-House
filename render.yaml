@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: brewberry-coffee-house
+    runtime: node
+    region: singapore
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: brewberry-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 24.11.0
+      - key: DATA_DIR
+        value: /var/data
